@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Creator | Emerald Brew Coffee Shop</title>
+  <meta name="description" content="Halaman Kreator UAS Aplikasi Komputer Bisnis Kampus STIE Ekadharma Indonesia.">
+  
+  <!-- Tailwind Play CDN for static compilation compatibility -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              primary: '#0F5E4F',
+              secondary: '#1C7C68',
+              accent: '#38A169',
+              bg: '#F8F8F6',
+              surface: '#FFFFFF',
+              textPrimary: '#1F2937',
+              textSecondary: '#6B7280',
+              border: '#E5E7EB',
+            }
+          },
+          fontFamily: {
+            sans: ['Poppins', 'Noto Sans KR', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom Static CSS -->
+  <link rel="stylesheet" href="./css/style.css">
+  
+  <!-- Font Awesome 6.4.0 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-[#F8F8F6] text-[#1F2937] font-sans antialiased">
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" class="scroll-progress"></div>
+
+  <!-- Loading Animation -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="flex flex-col items-center">
+      <div class="loader mb-4"></div>
+      <h1 class="font-bold text-xl tracking-wider text-[#0F5E4F]">EMERALD BREW</h1>
+      <p class="text-xs text-[#6B7280] tracking-widest mt-1">UAS Aplikasi Komputer Bisnis</p>
+    </div>
+  </div>
+
+  <!-- Sticky Header / Navbar -->
+  <header class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-transparent py-6">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <a href="./index.html" class="flex items-center space-x-2 text-left cursor-pointer group decoration-none">
+        <div class="w-10 h-10 rounded-full bg-[#0F5E4F] flex items-center justify-center text-white transition-all duration-300 group-hover:bg-[#1C7C68]">
+          <i class="fa-solid fa-mug-hot"></i>
+        </div>
+        <div>
+          <span class="block font-bold text-lg tracking-wider text-[#0F5E4F] leading-none">EMERALD BREW</span>
+          <span class="block text-[9px] text-[#6B7280] tracking-widest leading-none mt-1">에메랄드 브루</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="./index.html#home" class="nav-link text-sm tracking-wide">Home</a>
+        <a href="./index.html#about" class="nav-link text-sm tracking-wide">About</a>
+        <a href="./index.html#menu" class="nav-link text-sm tracking-wide">Menu</a>
+        <a href="./index.html#gallery" class="nav-link text-sm tracking-wide">Gallery</a>
+        <a href="./index.html#reservation" class="nav-link text-sm tracking-wide">Reservation</a>
+        <a href="./index.html#contact" class="nav-link text-sm tracking-wide">Contact</a>
+        <a href="./about.html" class="px-4 py-2 rounded-full bg-[#0F5E4F] text-white text-xs tracking-wide font-medium transition-all duration-300 relative active border border-[#0F5E4F]">
+          About Us (UAS)
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Trigger -->
+      <button id="mobile-menu-btn" class="md:hidden text-[#1F2937] hover:text-[#0F5E4F] transition-colors p-1 bg-transparent border-none outline-none cursor-pointer">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <div id="mobile-nav" class="fixed top-[72px] left-0 w-full bg-white/95 backdrop-blur-lg border-b border-[#E5E7EB] z-40 p-6 shadow-xl md:hidden hidden">
+    <div class="flex flex-col space-y-4">
+      <a href="./index.html#home" class="text-left py-2 text-[#6B7280] hover:text-[#0F5E4F] font-medium border-b border-[#E5E7EB]/50">Home</a>
+      <a href="./index.html#about" class="text-left py-2 text-[#6B7280] hover:text-[#0F5E4F] border-b border-[#E5E7EB]/50">About</a>
+      <a href="./index.html#menu" class="text-left py-2 text-[#6B7280] hover:text-[#0F5E4F] border-b border-[#E5E7EB]/50">Menu</a>
+      <a href="./index.html#gallery" class="text-left py-2 text-[#6B7280] hover:text-[#0F5E4F] border-b border-[#E5E7EB]/50">Gallery</a>
+      <a href="./index.html#reservation" class="text-left py-2 text-[#6B7280] hover:text-[#0F5E4F] border-b border-[#E5E7EB]/50">Reservation</a>
+      <a href="./index.html#contact" class="text-left py-2 text-[#6B7280] hover:text-[#0F5E4F] border-b border-[#E5E7EB]/50">Contact</a>
+      <a href="./about.html" class="text-left py-3 text-[#0F5E4F] font-bold flex items-center justify-between">
+        <span>About Us (UAS)</span>
+        <i class="fa-solid fa-chevron-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Area spacer -->
+  <div class="h-[100px]"></div>
+
+  <main class="py-16 bg-[#F8F8F6]">
+    <div class="max-w-4xl mx-auto px-6">
+      
+      <!-- Back Link -->
+      <a href="./index.html" class="inline-flex items-center space-x-2 text-xs font-medium text-[#1C7C68] hover:text-[#0F5E4F] transition-colors mb-10 decoration-none">
+        <span>&larr; Kembali ke Beranda Emerald Brew</span>
+      </a>
+
+      <!-- Student Bio Card -->
+      <div class="bg-white rounded-[30px] border border-[#E5E7EB] shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12 reveal active">
+        
+        <!-- Left Side Photo Column -->
+        <div class="md:col-span-5 bg-gradient-to-br from-[#0F5E4F] to-[#1C7C68] p-10 flex flex-col justify-between text-white relative overflow-hidden min-h-[350px]">
+          <div class="absolute -bottom-10 -right-10 w-44 h-44 bg-white/5 rounded-full"></div>
+          
+          <div class="space-y-4">
+            <span class="bg-white/25 px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold backdrop-blur-md">
+              Kreator Website
+            </span>
+            <h2 class="text-3xl font-bold tracking-tight">Yunita</h2>
+            <p class="text-xs text-white/80 leading-relaxed font-light">
+              Mahasiswa STIE Ekadharma Indonesia program Aplikasi Komputer Bisnis.
+            </p>
+          </div>
+
+          <!-- Minimalist Avatar Graphic PlaceHolder -->
+          <div class="w-32 h-32 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md flex flex-col items-center justify-center space-y-2 self-center my-6">
+            <i class="fa-solid fa-user-tie text-white/60 text-4xl"></i>
+            <span class="text-[10px] text-white/50 tracking-widest uppercase">Photo Profile</span>
+          </div>
+
+          <div class="space-y-1">
+            <span class="block text-[10px] text-white/50 uppercase tracking-wider">Lembaga Pendidikan</span>
+            <span class="block text-xs font-medium">STIE Ekadharma Indonesia</span>
+          </div>
+        </div>
+
+        <!-- Right Side Data Info Column -->
+        <div class="md:col-span-7 p-8 md:p-10 flex flex-col justify-between space-y-8">
+          <div class="space-y-6">
+            <div class="inline-flex items-center space-x-2 bg-[#0F5E4F]/5 px-3 py-1 rounded-full text-xs text-[#0F5E4F] font-semibold">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span>Data Akademik Mahasiswa</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6">
+              <div class="space-y-1">
+                <span class="block text-[10px] text-[#6B7280] uppercase tracking-widest font-semibold">Nama Lengkap</span>
+                <span class="block text-sm font-bold text-[#1F2937]">Yuyun Sri Wahyuni</span>
+              </div>
+              <div class="space-y-1">
+                <span class="block text-[10px] text-[#6B7280] uppercase tracking-widest font-semibold">NIM</span>
+                <span class="block text-sm font-bold text-[#1F2937]">20230810045</span>
+              </div>
+              <div class="space-y-1">
+                <span class="block text-[10px] text-[#6B7280] uppercase tracking-widest font-semibold">Semester</span>
+                <span class="block text-sm font-bold text-[#1F2937]">6 (Enam)</span>
+              </div>
+              <div class="space-y-1">
+                <span class="block text-[10px] text-[#6B7280] uppercase tracking-widest font-semibold">Kelas</span>
+                <span class="block text-sm font-bold text-[#1F2937]">Malam - Manajemen</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mandatory Text Required by prompt -->
+          <div class="bg-[#F8F8F6] p-6 rounded-2xl border border-[#E5E7EB] relative">
+            <p class="text-xs text-[#1F2937] leading-relaxed italic">
+              "Website ini dibuat sebagai Ujian Akhir Semester Mata Kuliah Aplikasi Komputer Bisnis Kampus STIE Ekadharma Indonesia."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kesan & Pesan Section -->
+      <div class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <!-- Interactive Form -->
+        <div class="lg:col-span-5 bg-white p-8 rounded-[30px] border border-[#E5E7EB] space-y-6 shadow-sm reveal active">
+          <h3 class="font-bold text-lg text-[#1F2937] border-b border-[#E5E7EB] pb-3">
+            Kesan & Pesan
+          </h3>
+          <p class="text-xs text-[#6B7280] font-light leading-relaxed">
+            Tuliskan komentar, kesan, atau saran Anda mengenai mata kuliah Aplikasi Komputer Bisnis ini.
+          </p>
+
+          <form id="student-feedback-form" class="space-y-4">
+            <div class="space-y-1">
+              <label class="block text-[10px] uppercase tracking-wider text-[#6B7280] font-semibold">Nama</label>
+              <input 
+                id="feedback-name"
+                type="text"
+                required
+                placeholder="Masukkan nama Anda..."
+                class="w-full px-4 py-2.5 bg-[#F8F8F6] border border-[#E5E7EB] rounded-xl text-xs focus:outline-none focus:border-[#0F5E4F]"
+              />
+            </div>
+
+            <div class="space-y-1">
+              <label class="block text-[10px] uppercase tracking-wider text-[#6B7280] font-semibold">Pilih Rating</label>
+              <select 
+                id="feedback-rating"
+                class="w-full px-4 py-2.5 bg-[#F8F8F6] border border-[#E5E7EB] rounded-xl text-xs focus:outline-none focus:border-[#0F5E4F]"
+              >
+                <option value="5">⭐⭐⭐⭐⭐ Excellent (5/5)</option>
+                <option value="4">⭐⭐⭐⭐ Good (4/5)</option>
+                <option value="3">⭐⭐ Neutral (3/5)</option>
+              </select>
+            </div>
+
+            <div class="space-y-1">
+              <label class="block text-[10px] uppercase tracking-wider text-[#6B7280] font-semibold">Kesan & Pesan</label>
+              <textarea 
+                id="feedback-msg"
+                required
+                rows="4"
+                placeholder="Tulis kesan Anda mengikuti mata kuliah..."
+                class="w-full px-4 py-2.5 bg-[#F8F8F6] border border-[#E5E7EB] rounded-xl text-xs focus:outline-none focus:border-[#0F5E4F] resize-none"
+              ></textarea>
+            </div>
+
+            <button 
+              type="submit"
+              class="w-full py-3 bg-[#0F5E4F] hover:bg-[#1C7C68] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all duration-300 cursor-pointer"
+            >
+              Kirim Kesan & Pesan
+            </button>
+          </form>
+        </div>
+
+        <!-- Dynamic Output Board -->
+        <div class="lg:col-span-7 space-y-4 reveal active">
+          <h3 class="font-bold text-lg text-[#1F2937] flex items-center space-x-2">
+            <i class="fa-solid fa-comments text-[#0F5E4F]"></i>
+            <span>Testimoni Mahasiswa & Dosen</span>
+          </h3>
+
+          <div id="feedback-list-container" class="space-y-4 max-h-[500px] overflow-y-auto pr-2">
+            <!-- Feedbacks will be dynamically injected by script.js -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Luxury Footer -->
+  <footer class="bg-[#0F5E4F] text-white pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/10 pb-12">
+      
+      <!-- Column 1 -->
+      <div class="space-y-4">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#0F5E4F]">
+            <i class="fa-solid fa-mug-hot"></i>
+          </div>
+          <span class="font-bold text-lg tracking-wider">EMERALD BREW</span>
+        </div>
+        <p class="text-xs text-white/70 leading-relaxed font-light">
+          Premium modern minimalist coffee shop inspired by Korean cafe aesthetic. Where every single cup of coffee brings you warmth and inner peace.
+        </p>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="space-y-4">
+        <h4 class="font-bold text-xs uppercase tracking-widest text-[#38A169]">Navigasi Cepat</h4>
+        <ul class="text-xs space-y-2.5 text-white/70 font-light list-none p-0">
+          <li><a href="./index.html#home" class="hover:text-white transition-colors text-white/70 decoration-none">Home</a></li>
+          <li><a href="./index.html#about" class="hover:text-white transition-colors text-white/70 decoration-none">About Us</a></li>
+          <li><a href="./index.html#menu" class="hover:text-white transition-colors text-white/70 decoration-none">Our Menu</a></li>
+          <li><a href="./index.html#gallery" class="hover:text-white transition-colors text-white/70 decoration-none">Gallery</a></li>
+          <li><a href="./about.html" class="hover:text-white transition-colors font-bold text-[#38A169] decoration-none">UAS Page</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="space-y-4">
+        <h4 class="font-bold text-xs uppercase tracking-widest text-[#38A169]">Jam Operasional</h4>
+        <ul class="text-xs space-y-2 text-white/70 font-light list-none p-0">
+          <li class="flex justify-between">
+            <span>Senin - Jumat:</span>
+            <span>08.00 - 22.00 WIB</span>
+          </li>
+          <li class="flex justify-between">
+            <span>Sabtu - Minggu:</span>
+            <span>09.00 - 23.00 WIB</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 4 -->
+      <div class="space-y-4">
+        <h4 class="font-bold text-xs uppercase tracking-widest text-[#38A169]">Hubungkan Dengan Kami</h4>
+        <p class="text-xs text-white/70 font-light">Ikuti akun resmi kami untuk update menu terbaru dan promo menarik.</p>
+        <div class="flex space-x-3">
+          <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#38A169] transition-colors flex items-center justify-center text-white text-sm decoration-none">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://facebook.com" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#38A169] transition-colors flex items-center justify-center text-white text-sm decoration-none">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="max-w-7xl mx-auto px-6 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-white/50 font-light space-y-4 md:space-y-0">
+      <span>&copy; 2026 Emerald Brew Cafe Jakarta. Semua Hak Cipta Dilindungi.</span>
+      <div class="flex items-center space-x-1">
+        <span>Dibuat dengan</span>
+        <i class="fa-solid fa-heart text-[#38A169]"></i>
+        <span>untuk UAS STIE Ekadharma Indonesia</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Core Javascript -->
+  <script src="./js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "Emerald Brew",
+  "description": "Premium Korean Modern Aesthetic Coffee Shop",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

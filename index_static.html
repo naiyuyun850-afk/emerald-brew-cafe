@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emerald Brew | Premium Korean Modern Aesthetic Coffee Shop</title>
+  <meta name="description" content="Experience premium handcrafted coffee inspired by Korean café culture at Emerald Brew. Enjoy modern minimalist luxury with calm and elegant ambiance.">
+  
+  <!-- Tailwind Play CDN for static compilation compatibility -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              primary: '#0F5E4F',
+              secondary: '#1C7C68',
+              accent: '#38A169',
+              bg: '#F8F8F6',
+              surface: '#FFFFFF',
+              textPrimary: '#1F2937',
+              textSecondary: '#6B7280',
+              border: '#E5E7EB',
+            }
+          },
+          fontFamily: {
+            sans: ['Poppins', 'Noto Sans KR', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom Static CSS -->
+  <link rel="stylesheet" href="./css/style.css">
+  
+  <!-- Font Awesome 6.4.0 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-[#F8F8F6] text-[#1F2937] font-sans antialiased overflow-x-hidden">
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" class="scroll-progress"></div>
+
+  <!-- Loading Animation -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="flex flex-col items-center">
+      <div class="loader mb-4"></div>
+      <h1 class="font-bold text-xl tracking-wider text-[#0F5E4F]">EMERALD BREW</h1>
+      <p class="text-xs text-[#6B7280] tracking-widest mt-1">에메랄드 브루 • Loading Calmness</p>
+    </div>
+  </div>
+
+  <!-- Sticky Header / Navbar -->
+  <header class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-transparent py-6">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <a href="./index_static.html" class="flex items-center space-x-2 text-left cursor-pointer group decoration-none">
+        <div class="w-10 h-10 rounded-full bg-[#0F5E4F] flex items-center justify-center text-white transition-all duration-300 group-hover:bg-[#1C7C68]">
+          <i class="fa-solid fa-mug-hot text-base"></i>
+        </div>
+        <div>
+          <span class="block font-bold text-lg tracking-wider text-[#0F5E4F] leading-none">EMERALD BREW</span>
+          <span class="block text-[9px] text-[#6B7280] tracking-widest leading-none mt-1">에메랄드 브루</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#home" class="nav-link text-sm tracking-wide active">Home</a>
+        <a href="#about" class="nav-link text-sm tracking-wide">About</a>
+        <a href="#menu" class="nav-link text-sm tracking-wide">Menu</a>
+        <a href="#gallery" class="nav-link text-sm tracking-wide">Gallery</a>
+        <a href="#reservation" class="nav-link text-sm tracking-wide">Reservation</a>
+        <a href="#contact" class="nav-link text-sm tracking-wide">Contact</a>
+        <a href="./about.html" class="px-4 py-2 rounded-full border border-[#0F5E4F]/30 text-[#0F5E4F] hover:bg-[#0F5E4F] hover:text-white text-xs tracking-wide font-medium transition-all duration-300 relative decoration-none">
+          About Us (UAS)
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Trigger -->
+      <button id="mobile-menu-btn" class="md:hidden text-[#1F2937] hover:text-[#0F5E4F] transition-colors p-1 bg-transparent border-none outline-none cursor-pointer">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <div id="mobile-nav" class="fixed top-[72px] left-0 w-full bg-white/95 backdrop-blur-lg border-b border-[#E5E7EB] z-40 p-6 shadow-xl md:hidden hidden">
+    <div class="flex flex-col space-y-4">
+      <a href="#home" class="text-left py-2 text-[#1F2937] hover:text-[#0F5E4F] font-medium border-b border-[#E5E7EB]/50 decoration-none">Home</a>
+      <a href="#about" class="text-left py-2 text-[#6B7280] hover:text-[#0F5E4F] border-b border-[#E5E7EB]/50 decoration-none">About</a>
+      <a href="#menu" class="text-left py-2 text-[#6B7280] hover:text-[#0F5E4F] border-b border-[#E5E7EB]/50 decoration-none">Menu</a>
+      <a href="#gallery" class="text-left py-2 text-[#6B7280] hover:text-[#0F5E4F] border-b border-[#E5E7EB]/50 decoration-none">Gallery</a>
+      <a href="#reservation" class="text-left py-2 text-[#6B7280] hover:text-[#0F5E4F] border-b border-[#E5E7EB]/50 decoration-none">Reservation</a>
+      <a href="#contact" class="text-left py-2 text-[#6B7280] hover:text-[#0F5E4F] border-b border-[#E5E7EB]/50 decoration-none">Contact</a>
+      <a href="./about.html" class="text-left py-3 text-[#0F5E4F] font-bold flex items-center justify-between decoration-none">
+        <span>About Us (UAS)</span>
+        <i class="fa-solid fa-chevron-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="relative h-[90vh] flex items-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-[2000s] scale-105" style="background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1600')"></div>
+    <div class="absolute inset-0 hero-overlay"></div>
+
+    <div class="relative max-w-7xl mx-auto w-full px-6 md:px-12 z-10 text-white">
+      <div class="max-w-2xl space-y-6">
+        <div class="inline-flex items-center space-x-2 bg-emerald-800/30 border border-emerald-500/40 px-4 py-1.5 rounded-full backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-[#38A169] animate-pulse"></span>
+          <span class="text-xs tracking-widest uppercase font-medium">Premium Handcrafted Coffee</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight md:leading-none">
+          Where Every Cup <br>
+          <span class="text-[#38A169]">Feels Like Home</span>
+        </h1>
+
+        <p class="text-sm md:text-lg text-gray-200 font-light leading-relaxed max-w-lg">
+          Premium handcrafted coffee inspired by Korean café culture. Experience modern minimalist luxury with calm and elegant ambiance.
+        </p>
+
+        <div class="flex flex-wrap gap-4 pt-4">
+          <a href="#menu" class="btn-ripple px-8 py-3.5 bg-[#0F5E4F] hover:bg-[#1C7C68] text-white text-sm font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-out cursor-pointer decoration-none">
+            Explore Menu
+          </a>
+          <a href="#reservation" class="btn-ripple px-8 py-3.5 bg-white/15 hover:bg-white/25 border border-white/30 text-white text-sm font-medium rounded-full backdrop-blur-md transition-all duration-300 cursor-pointer decoration-none">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Down Hint -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 text-white/60 text-xs tracking-widest uppercase z-10 pointer-events-none">
+      <span>Scroll Down</span>
+      <div class="w-1 h-4 bg-white/60 rounded-full animate-bounce"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT US SECTION -->
+  <section id="about" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        
+        <!-- Grid layout Pinterest -->
+        <div class="grid grid-cols-2 gap-4 relative reveal">
+          <div class="absolute -top-6 -left-6 w-32 h-32 bg-[#0F5E4F]/5 rounded-full -z-10"></div>
+          <div class="space-y-4">
+            <div class="rounded-3xl overflow-hidden shadow-sm aspect-square bg-[#F8F8F6] border border-[#E5E7EB]">
+              <img src="https://images.unsplash.com/photo-1507133750040-4a8f57021571?auto=format&fit=crop&q=80&w=400" alt="Brewing" class="w-full h-full object-cover transition-all duration-700 hover:scale-105">
+            </div>
+            <div class="rounded-3xl overflow-hidden shadow-sm aspect-[4/5]">
+              <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=400" alt="Cafe Seating" class="w-full h-full object-cover transition-all duration-700 hover:scale-105">
+            </div>
+          </div>
+          <div class="space-y-4 pt-8">
+            <div class="rounded-3xl overflow-hidden shadow-sm aspect-[4/5]">
+              <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=400" alt="Cup" class="w-full h-full object-cover transition-all duration-700 hover:scale-105">
+            </div>
+            <div class="rounded-3xl overflow-hidden shadow-sm aspect-square bg-[#F8F8F6] p-6 flex flex-col justify-end border border-[#E5E7EB]">
+              <span class="font-bold text-3xl text-[#0F5E4F]">에메랄드</span>
+              <span class="text-xs text-[#6B7280] tracking-widest uppercase mt-2">Pure Harmony</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Narrative column -->
+        <div class="space-y-8 reveal">
+          <div class="space-y-2">
+            <span class="text-xs uppercase tracking-widest text-[#1C7C68] font-bold">Filosofi & Kebanggaan</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-[#1F2937] tracking-tight">
+              Inspirasi Rasa dari <br>
+              <span class="text-[#0F5E4F] underline decoration-wavy decoration-[#38A169]/30">Budaya Kafe Seoul</span>
+            </h2>
+          </div>
+
+          <p class="text-[#6B7280] leading-relaxed text-sm md:text-base font-light">
+            Emerald Brew lahir dari kekaguman mendalam terhadap arsitektur minimalis dan keanggunan tata cara penyajian kopi di Korea Selatan. Setiap tegukan dirancang untuk membawa ketenangan jiwa di tengah hiruk-pikuk kota.
+          </p>
+
+          <p class="text-[#6B7280] leading-relaxed text-sm md:text-base font-light">
+            Kami berkolaborasi langsung dengan petani lokal Gayo untuk menyajikan biji arabika terbaik, disangrai secara presisi dan diracik menggunakan standar modern kafe premium untuk memastikan kesempurnaan cita rasa.
+          </p>
+
+          <div class="grid grid-cols-3 gap-6 pt-6 border-t border-[#E5E7EB]">
+            <div class="space-y-1">
+              <span class="block text-2xl md:text-3xl font-bold text-[#0F5E4F]">10+</span>
+              <span class="block text-[11px] text-[#6B7280] uppercase tracking-wider font-medium">Years Exp</span>
+            </div>
+            <div class="space-y-1">
+              <span class="block text-2xl md:text-3xl font-bold text-[#0F5E4F]">25+</span>
+              <span class="block text-[11px] text-[#6B7280] uppercase tracking-wider font-medium">Coffee Variants</span>
+            </div>
+            <div class="space-y-1">
+              <span class="block text-2xl md:text-3xl font-bold text-[#0F5E4F]">5000+</span>
+              <span class="block text-[11px] text-[#6B7280] uppercase tracking-wider font-medium">Happy Guests</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU SECTION -->
+  <section id="menu" class="py-24 bg-[#F8F8F6]">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Menu Header -->
+      <div class="text-center max-w-2xl mx-auto space-y-4 mb-16 reveal">
+        <span class="text-xs uppercase tracking-widest text-[#1C7C68] font-bold">Kurasi Menu Terbaik</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-[#1F2937]">Crafted Beverage & Desserts</h2>
+        <p class="text-[#6B7280] text-sm font-light leading-relaxed">
+          Setiap menu dibuat dengan dedikasi tinggi, menggunakan pemanis alami, susu pilihan, dan bahan premium asli dari Korea.
+        </p>
+
+        <!-- Category Tabs -->
+        <div class="flex flex-wrap justify-center gap-2 pt-6">
+          <button class="menu-tab px-5 py-2 rounded-full text-xs font-medium tracking-wider uppercase transition-all duration-300 bg-[#0F5E4F] text-white border border-[#E5E7EB]" data-filter="all">All Menu</button>
+          <button class="menu-tab px-5 py-2 rounded-full text-xs font-medium tracking-wider uppercase transition-all duration-300 bg-white text-[#6B7280] hover:bg-[#0F5E4F]/5 border border-[#E5E7EB]" data-filter="signature">Signature</button>
+          <button class="menu-tab px-5 py-2 rounded-full text-xs font-medium tracking-wider uppercase transition-all duration-300 bg-white text-[#6B7280] hover:bg-[#0F5E4F]/5 border border-[#E5E7EB]" data-filter="coffee">Coffee</button>
+          <button class="menu-tab px-5 py-2 rounded-full text-xs font-medium tracking-wider uppercase transition-all duration-300 bg-white text-[#6B7280] hover:bg-[#0F5E4F]/5 border border-[#E5E7EB]" data-filter="non-coffee">Non-Coffee</button>
+          <button class="menu-tab px-5 py-2 rounded-full text-xs font-medium tracking-wider uppercase transition-all duration-300 bg-white text-[#6B7280] hover:bg-[#0F5E4F]/5 border border-[#E5E7EB]" data-filter="dessert">Dessert</button>
+        </div>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 reveal">
+        
+        <!-- Card 1 -->
+        <div class="menu-card-item bg-white rounded-[20px] overflow-hidden border border-[#E5E7EB] hover:shadow-xl transition-all duration-300 flex flex-col h-full group" data-category="signature">
+          <div class="relative overflow-hidden aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=600" alt="Emerald Einspänner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <span class="absolute top-4 left-4 bg-[#0F5E4F] text-white text-[9px] uppercase tracking-widest font-semibold px-3 py-1 rounded-full">Best Seller</span>
+            <span class="absolute top-4 right-4 bg-white/80 backdrop-blur-sm text-[#0F5E4F] font-medium text-[10px] px-2.5 py-1 rounded-md">아인슈페너</span>
+          </div>
+          <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
+            <div class="space-y-2">
+              <h3 class="font-bold text-base text-[#1F2937] group-hover:text-[#0F5E4F] transition-colors">Emerald Einspänner</h3>
+              <p class="text-xs text-[#6B7280] font-light leading-relaxed line-clamp-2">Kopi hitam dingin premium bertabur krim lembut tebal rasa kelapa pandan khas Emerald Brew yang manis dan gurih.</p>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-[#E5E7EB]/55">
+              <span class="font-bold text-[#0F5E4F] text-sm">Rp 45.000</span>
+              <a href="https://wa.me/6281234567890?text=Saya%20tertarik%20memesan%20Emerald%20Einsp%C3%A4nner" target="_blank" class="px-4 py-1.5 rounded-full bg-[#F8F8F6] text-[#0F5E4F] text-xs font-semibold tracking-wide transition-all duration-300 hover:bg-[#0F5E4F] hover:text-white border border-[#0F5E4F]/20 decoration-none">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="menu-card-item bg-white rounded-[20px] overflow-hidden border border-[#E5E7EB] hover:shadow-xl transition-all duration-300 flex flex-col h-full group" data-category="non-coffee">
+          <div class="relative overflow-hidden aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&q=80&w=600" alt="Korean Strawberry Latte" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <span class="absolute top-4 left-4 bg-[#0F5E4F] text-white text-[9px] uppercase tracking-widest font-semibold px-3 py-1 rounded-full">Signature</span>
+            <span class="absolute top-4 right-4 bg-white/80 backdrop-blur-sm text-[#0F5E4F] font-medium text-[10px] px-2.5 py-1 rounded-md">딸기 라떼</span>
+          </div>
+          <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
+            <div class="space-y-2">
+              <h3 class="font-bold text-base text-[#1F2937] group-hover:text-[#0F5E4F] transition-colors">Korean Strawberry Latte</h3>
+              <p class="text-xs text-[#6B7280] font-light leading-relaxed line-clamp-2">Suku segar dingin dipadukan dengan kompot stroberi asli buatan tangan yang manis segar, khas kafe populer Seoul.</p>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-[#E5E7EB]/55">
+              <span class="font-bold text-[#0F5E4F] text-sm">Rp 42.000</span>
+              <a href="https://wa.me/6281234567890?text=Saya%20tertarik%20memesan%20Korean%20Strawberry%20Latte" target="_blank" class="px-4 py-1.5 rounded-full bg-[#F8F8F6] text-[#0F5E4F] text-xs font-semibold tracking-wide transition-all duration-300 hover:bg-[#0F5E4F] hover:text-white border border-[#0F5E4F]/20 decoration-none">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="menu-card-item bg-white rounded-[20px] overflow-hidden border border-[#E5E7EB] hover:shadow-xl transition-all duration-300 flex flex-col h-full group" data-category="coffee">
+          <div class="relative overflow-hidden aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?auto=format&fit=crop&q=80&w=600" alt="Sweet Dalgona Latte" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <span class="absolute top-4 left-4 bg-[#0F5E4F] text-white text-[9px] uppercase tracking-widest font-semibold px-3 py-1 rounded-full">Popular</span>
+            <span class="absolute top-4 right-4 bg-white/80 backdrop-blur-sm text-[#0F5E4F] font-medium text-[10px] px-2.5 py-1 rounded-md">달고나 라떼</span>
+          </div>
+          <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
+            <div class="space-y-2">
+              <h3 class="font-bold text-base text-[#1F2937] group-hover:text-[#0F5E4F] transition-colors">Sweet Dalgona Latte</h3>
+              <p class="text-xs text-[#6B7280] font-light leading-relaxed line-clamp-2">Espresso shot ganda dengan susu segar hangat, disajikan dengan pecahan permen honeycomb tradisional Korea (Dalgona) yang gurih-manis.</p>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-[#E5E7EB]/55">
+              <span class="font-bold text-[#0F5E4F] text-sm">Rp 38.000</span>
+              <a href="https://wa.me/6281234567890?text=Saya%20tertarik%20memesan%20Sweet%20Dalgona%20Latte" target="_blank" class="px-4 py-1.5 rounded-full bg-[#F8F8F6] text-[#0F5E4F] text-xs font-semibold tracking-wide transition-all duration-300 hover:bg-[#0F5E4F] hover:text-white border border-[#0F5E4F]/20 decoration-none">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="menu-card-item bg-white rounded-[20px] overflow-hidden border border-[#E5E7EB] hover:shadow-xl transition-all duration-300 flex flex-col h-full group" data-category="signature">
+          <div class="relative overflow-hidden aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600" alt="Black Sesame Latte" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <span class="absolute top-4 right-4 bg-white/80 backdrop-blur-sm text-[#0F5E4F] font-medium text-[10px] px-2.5 py-1 rounded-md">흑임자 라떼</span>
+          </div>
+          <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
+            <div class="space-y-2">
+              <h3 class="font-bold text-base text-[#1F2937] group-hover:text-[#0F5E4F] transition-colors">Black Sesame Latte</h3>
+              <p class="text-xs text-[#6B7280] font-light leading-relaxed line-clamp-2">Minuman oat milk beraroma wijen hitam panggang khas Korea yang kaya nutrisi, dipadukan krim lembut di atasnya.</p>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-[#E5E7EB]/55">
+              <span class="font-bold text-[#0F5E4F] text-sm">Rp 40.000</span>
+              <a href="https://wa.me/6281234567890?text=Saya%20tertarik%20memesan%20Black%20Sesame%20Latte" target="_blank" class="px-4 py-1.5 rounded-full bg-[#F8F8F6] text-[#0F5E4F] text-xs font-semibold tracking-wide transition-all duration-300 hover:bg-[#0F5E4F] hover:text-white border border-[#0F5E4F]/20 decoration-none">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="menu-card-item bg-white rounded-[20px] overflow-hidden border border-[#E5E7EB] hover:shadow-xl transition-all duration-300 flex flex-col h-full group" data-category="non-coffee">
+          <div class="relative overflow-hidden aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&q=80&w=600" alt="Jeju Matcha Latte" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <span class="absolute top-4 right-4 bg-white/80 backdrop-blur-sm text-[#0F5E4F] font-medium text-[10px] px-2.5 py-1 rounded-md">제주 말차 라떼</span>
+          </div>
+          <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
+            <div class="space-y-2">
+              <h3 class="font-bold text-base text-[#1F2937] group-hover:text-[#0F5E4F] transition-colors">Jeju Matcha Latte</h3>
+              <p class="text-xs text-[#6B7280] font-light leading-relaxed line-clamp-2">Bubuk matcha murni berkualitas premium langsung diimpor dari perkebunan Jeju, disajikan dengan susu almond hangat atau dingin.</p>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-[#E5E7EB]/55">
+              <span class="font-bold text-[#0F5E4F] text-sm">Rp 42.000</span>
+              <a href="https://wa.me/6281234567890?text=Saya%20tertarik%20memesan%20Jeju%20Matcha%20Latte" target="_blank" class="px-4 py-1.5 rounded-full bg-[#F8F8F6] text-[#0F5E4F] text-xs font-semibold tracking-wide transition-all duration-300 hover:bg-[#0F5E4F] hover:text-white border border-[#0F5E4F]/20 decoration-none">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="menu-card-item bg-white rounded-[20px] overflow-hidden border border-[#E5E7EB] hover:shadow-xl transition-all duration-300 flex flex-col h-full group" data-category="dessert">
+          <div class="relative overflow-hidden aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&q=80&w=600" alt="Signature Ice Croffle" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <span class="absolute top-4 left-4 bg-[#0F5E4F] text-white text-[9px] uppercase tracking-widest font-semibold px-3 py-1 rounded-full">Highly Recommended</span>
+            <span class="absolute top-4 right-4 bg-white/80 backdrop-blur-sm text-[#0F5E4F] font-medium text-[10px] px-2.5 py-1 rounded-md">크로플</span>
+          </div>
+          <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
+            <div class="space-y-2">
+              <h3 class="font-bold text-base text-[#1F2937] group-hover:text-[#0F5E4F] transition-colors">Signature Ice Croffle</h3>
+              <p class="text-xs text-[#6B7280] font-light leading-relaxed line-clamp-2">Croissant panggang berbentuk waffle renyah di luar lembut di dalam, dengan es krim vanila Madagaskar manis gurih.</p>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-[#E5E7EB]/55">
+              <span class="font-bold text-[#0F5E4F] text-sm">Rp 48.000</span>
+              <a href="https://wa.me/6281234567890?text=Saya%20tertarik%20memesan%20Signature%20Ice%20Croffle" target="_blank" class="px-4 py-1.5 rounded-full bg-[#F8F8F6] text-[#0F5E4F] text-xs font-semibold tracking-wide transition-all duration-300 hover:bg-[#0F5E4F] hover:text-white border border-[#0F5E4F]/20 decoration-none">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="menu-card-item bg-white rounded-[20px] overflow-hidden border border-[#E5E7EB] hover:shadow-xl transition-all duration-300 flex flex-col h-full group" data-category="coffee">
+          <div class="relative overflow-hidden aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&q=80&w=600" alt="Emerald Cold Brew" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <span class="absolute top-4 right-4 bg-white/80 backdrop-blur-sm text-[#0F5E4F] font-medium text-[10px] px-2.5 py-1 rounded-md">콜드 브루</span>
+          </div>
+          <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
+            <div class="space-y-2">
+              <h3 class="font-bold text-base text-[#1F2937] group-hover:text-[#0F5E4F] transition-colors">Emerald Cold Brew</h3>
+              <p class="text-xs text-[#6B7280] font-light leading-relaxed line-clamp-2">Kopi seduh dingin selama 12 jam menggunakan biji arabika Gayo pilihan yang menghasilkan rasa bersih, manis natural.</p>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-[#E5E7EB]/55">
+              <span class="font-bold text-[#0F5E4F] text-sm">Rp 36.000</span>
+              <a href="https://wa.me/6281234567890?text=Saya%20tertarik%20memesan%20Emerald%20Cold%20Brew" target="_blank" class="px-4 py-1.5 rounded-full bg-[#F8F8F6] text-[#0F5E4F] text-xs font-semibold tracking-wide transition-all duration-300 hover:bg-[#0F5E4F] hover:text-white border border-[#0F5E4F]/20 decoration-none">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="menu-card-item bg-white rounded-[20px] overflow-hidden border border-[#E5E7EB] hover:shadow-xl transition-all duration-300 flex flex-col h-full group" data-category="dessert">
+          <div class="relative overflow-hidden aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&q=80&w=600" alt="Sweet Injeolmi Cake" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <span class="absolute top-4 right-4 bg-white/80 backdrop-blur-sm text-[#0F5E4F] font-medium text-[10px] px-2.5 py-1 rounded-md">인절미 케이크</span>
+          </div>
+          <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
+            <div class="space-y-2">
+              <h3 class="font-bold text-base text-[#1F2937] group-hover:text-[#0F5E4F] transition-colors">Sweet Injeolmi Cake</h3>
+              <p class="text-xs text-[#6B7280] font-light leading-relaxed line-clamp-2">Sponge cake vanilla sangat lembut dilapisi krim kacang kedelai panggang tradisional khas Korea yang lezat.</p>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-[#E5E7EB]/55">
+              <span class="font-bold text-[#0F5E4F] text-sm">Rp 45.000</span>
+              <a href="https://wa.me/6281234567890?text=Saya%20tertarik%20memesan%20Sweet%20Injeolmi%20Cake" target="_blank" class="px-4 py-1.5 rounded-full bg-[#F8F8F6] text-[#0F5E4F] text-xs font-semibold tracking-wide transition-all duration-300 hover:bg-[#0F5E4F] hover:text-white border border-[#0F5E4F]/20 decoration-none">Order</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY SECTION -->
+  <section id="gallery" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto space-y-4 mb-16 reveal">
+        <span class="text-xs uppercase tracking-widest text-[#1C7C68] font-bold">Estetika Visual</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-[#1F2937]">Emerald Moment</h2>
+        <p class="text-[#6B7280] text-sm font-light leading-relaxed">
+          Setiap sudut dari Emerald Brew adalah karya seni arsitektur minimalis yang sempurna untuk portofolio Pinterest Anda.
+        </p>
+      </div>
+
+      <!-- Pinterest Masonry Layout -->
+      <div class="masonry-grid reveal">
+        
+        <!-- Image 1 -->
+        <div class="masonry-item relative group">
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=600" alt="Interior Wood" class="w-full h-auto transition-transform duration-750 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+            <span class="text-[#38A169] text-[10px] uppercase tracking-widest font-bold mb-1">Ambience</span>
+            <h4 class="text-white font-bold text-lg">Warm Wooden Interiors</h4>
+          </div>
+        </div>
+
+        <!-- Image 2 -->
+        <div class="masonry-item relative group">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=600" alt="Pouring" class="w-full h-auto transition-transform duration-750 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+            <span class="text-[#38A169] text-[10px] uppercase tracking-widest font-bold mb-1">Craftsmanship</span>
+            <h4 class="text-white font-bold text-lg">Pouring with Love</h4>
+          </div>
+        </div>
+
+        <!-- Image 3 -->
+        <div class="masonry-item relative group">
+          <img src="https://images.unsplash.com/photo-1507133750040-4a8f57021571?auto=format&fit=crop&q=80&w=600" alt="Brewing" class="w-full h-auto transition-transform duration-750 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+            <span class="text-[#38A169] text-[10px] uppercase tracking-widest font-bold mb-1">Beverage</span>
+            <h4 class="text-white font-bold text-lg">Premium Handcrafted Coffee</h4>
+          </div>
+        </div>
+
+        <!-- Image 4 -->
+        <div class="masonry-item relative group">
+          <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=600" alt="Seating" class="w-full h-auto transition-transform duration-750 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+            <span class="text-[#38A169] text-[10px] uppercase tracking-widest font-bold mb-1">Minimalist Design</span>
+            <h4 class="text-white font-bold text-lg">Symmetrical Architecture</h4>
+          </div>
+        </div>
+
+        <!-- Image 5 -->
+        <div class="masonry-item relative group">
+          <img src="https://images.unsplash.com/photo-1510972527409-cef1903972fa?auto=format&fit=crop&q=80&w=600" alt="La Marzocco" class="w-full h-auto transition-transform duration-750 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+            <span class="text-[#38A169] text-[10px] uppercase tracking-widest font-bold mb-1">Precision</span>
+            <h4 class="text-white font-bold text-lg">La Marzocco Crafting</h4>
+          </div>
+        </div>
+
+        <!-- Image 6 -->
+        <div class="masonry-item relative group">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=600" alt="Desserts" class="w-full h-auto transition-transform duration-750 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+            <span class="text-[#38A169] text-[10px] uppercase tracking-widest font-bold mb-1">Bite Size</span>
+            <h4 class="text-white font-bold text-lg">Aesthetic Desserts Pair</h4>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVATION SECTION -->
+  <section id="reservation" class="py-24 bg-[#F8F8F6]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-stretch">
+        
+        <!-- Info Column -->
+        <div class="lg:col-span-5 flex flex-col justify-between space-y-8 reveal">
+          <div class="space-y-4">
+            <span class="text-xs uppercase tracking-widest text-[#1C7C68] font-bold">Sistem Reservasi</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-[#1F2937] tracking-tight">Amankan Meja <br>Aesthetic Anda</h2>
+            <p class="text-[#6B7280] font-light text-sm md:text-base leading-relaxed">
+              Kami menyediakan area privat dan meja terbaik untuk pertemuan bisnis, perayaan ulang tahun, atau sekedar mencari inspirasi dalam suasana yang hening.
+            </p>
+          </div>
+
+          <div class="space-y-4 bg-white p-6 rounded-2xl border border-[#E5E7EB]">
+            <h4 class="font-bold text-sm text-[#0F5E4F] uppercase tracking-wider">Ketentuan Reservasi:</h4>
+            <ul class="text-xs text-[#6B7280] space-y-2 font-light list-none p-0">
+              <li class="flex items-center space-x-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#1C7C68]"></span>
+                <span>Harap hadir 10 menit sebelum waktu reservasi.</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#1C7C68]"></span>
+                <span>Reservasi gratis tanpa biaya pemesanan meja.</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#1C7C68]"></span>
+                <span>Meja akan ditahan maksimal selama 15 menit.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Form Column -->
+        <div class="lg:col-span-7 reveal">
+          <form id="reservation-form" class="bg-white p-8 md:p-10 rounded-[30px] shadow-sm border border-[#E5E7EB] space-y-6">
+            <h3 class="font-bold text-xl text-[#1F2937] border-b border-[#E5E7EB] pb-4">Formulir Reservasi Instan</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              
+              <!-- Name -->
+              <div class="space-y-2">
+                <label class="block text-xs uppercase tracking-wider text-[#6B7280] font-semibold">Nama Lengkap</label>
+                <div class="relative">
+                  <i class="fa-solid fa-user absolute left-4 top-1/2 -translate-y-1/2 text-[#6B7280]"></i>
+                  <input id="res-name" type="text" required placeholder="Yunita" class="w-full pl-12 pr-4 py-3 bg-[#F8F8F6] border border-[#E5E7EB] rounded-xl text-sm focus:outline-none focus:border-[#0F5E4F]">
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="space-y-2">
+                <label class="block text-xs uppercase tracking-wider text-[#6B7280] font-semibold">Nomor WhatsApp</label>
+                <div class="relative">
+                  <i class="fa-solid fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-[#6B7280]"></i>
+                  <input id="res-phone" type="tel" required placeholder="628123456789" class="w-full pl-12 pr-4 py-3 bg-[#F8F8F6] border border-[#E5E7EB] rounded-xl text-sm focus:outline-none focus:border-[#0F5E4F]">
+                </div>
+              </div>
+
+              <!-- Guests -->
+              <div class="space-y-2">
+                <label class="block text-xs uppercase tracking-wider text-[#6B7280] font-semibold">Jumlah Orang</label>
+                <div class="relative">
+                  <i class="fa-solid fa-users absolute left-4 top-1/2 -translate-y-1/2 text-[#6B7280]"></i>
+                  <select id="res-guests" class="w-full pl-12 pr-4 py-3 bg-[#F8F8F6] border border-[#E5E7EB] rounded-xl text-sm focus:outline-none focus:border-[#0F5E4F] appearance-none">
+                    <option value="1 Orang">1 Orang</option>
+                    <option value="2 Orang">2 Orang</option>
+                    <option value="4 Orang">4 Orang</option>
+                    <option value="6 Orang">6 Orang</option>
+                    <option value="8+ Orang (Grup)">8+ Orang (Grup)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Date -->
+              <div class="space-y-2">
+                <label class="block text-xs uppercase tracking-wider text-[#6B7280] font-semibold">Tanggal Reservasi</label>
+                <div class="relative">
+                  <i class="fa-solid fa-calendar absolute left-4 top-1/2 -translate-y-1/2 text-[#6B7280]"></i>
+                  <input id="res-date" type="date" required class="w-full pl-12 pr-4 py-3 bg-[#F8F8F6] border border-[#E5E7EB] rounded-xl text-sm focus:outline-none focus:border-[#0F5E4F]">
+                </div>
+              </div>
+
+              <!-- Time -->
+              <div class="space-y-2">
+                <label class="block text-xs uppercase tracking-wider text-[#6B7280] font-semibold">Jam Reservasi</label>
+                <div class="relative">
+                  <i class="fa-solid fa-clock absolute left-4 top-1/2 -translate-y-1/2 text-[#6B7280]"></i>
+                  <input id="res-time" type="time" required class="w-full pl-12 pr-4 py-3 bg-[#F8F8F6] border border-[#E5E7EB] rounded-xl text-sm focus:outline-none focus:border-[#0F5E4F]">
+                </div>
+              </div>
+
+              <!-- Notes -->
+              <div class="space-y-2 md:col-span-2">
+                <label class="block text-xs uppercase tracking-wider text-[#6B7280] font-semibold">Catatan Khusus (Opsional)</label>
+                <div class="relative">
+                  <i class="fa-solid fa-file-invoice absolute left-4 top-[14px] text-[#6B7280]"></i>
+                  <textarea id="res-notes" rows="3" placeholder="Dekat jendela, siapkan lilin ulang tahun, dll..." class="w-full pl-12 pr-4 py-3 bg-[#F8F8F6] border border-[#E5E7EB] rounded-xl text-sm focus:outline-none focus:border-[#0F5E4F] resize-none"></textarea>
+                </div>
+              </div>
+
+            </div>
+
+            <button type="submit" class="btn-ripple w-full py-4 bg-[#0F5E4F] hover:bg-[#1C7C68] text-white text-sm font-semibold tracking-wider uppercase rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer border-none">
+              <i class="fa-solid fa-paper-plane text-xs"></i>
+              <span>Kirim Reservasi via WhatsApp</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & MAP SECTION -->
+  <section id="contact" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        
+        <!-- Info column -->
+        <div class="space-y-8 reveal">
+          <div class="space-y-2">
+            <span class="text-xs uppercase tracking-widest text-[#1C7C68] font-bold">Kunjungi Kami</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-[#1F2937]">Lokasi & Kontak</h2>
+          </div>
+
+          <div class="space-y-6">
+            
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 bg-[#F8F8F6] rounded-xl flex items-center justify-center text-[#0F5E4F] border border-[#E5E7EB] shrink-0">
+                <i class="fa-solid fa-location-dot text-lg"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-[#1F2937]">Alamat Utama</h4>
+                <p class="text-xs text-[#6B7280] leading-relaxed mt-1">
+                  Jl. Jenderal Sudirman No. 45, Kebayoran Baru, Jakarta Selatan, 12190
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 bg-[#F8F8F6] rounded-xl flex items-center justify-center text-[#0F5E4F] border border-[#E5E7EB] shrink-0">
+                <i class="fa-solid fa-clock-rotate-left text-lg"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-[#1F2937]">Jam Operasional</h4>
+                <p class="text-xs text-[#6B7280] leading-relaxed mt-1">
+                  Senin - Jumat : 08.00 - 22.00 WIB <br>
+                  Sabtu - Minggu : 09.00 - 23.00 WIB
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 bg-[#F8F8F6] rounded-xl flex items-center justify-center text-[#0F5E4F] border border-[#E5E7EB] shrink-0">
+                <i class="fa-solid fa-envelope text-lg"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-[#1F2937]">Kontak Digital</h4>
+                <p class="text-xs text-[#6B7280] leading-relaxed mt-1">
+                  Email: contact@emeraldbrew.com <br>
+                  WhatsApp: +62 812-3456-7890
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <a href="https://wa.me/6281234567890?text=Halo%20Emerald%20Brew" target="_blank" class="btn-ripple inline-flex px-8 py-3.5 bg-[#1C7C68] hover:bg-[#0F5E4F] text-white text-xs font-semibold tracking-wider uppercase rounded-full shadow-md hover:shadow-lg transition-all duration-300 items-center space-x-2 cursor-pointer decoration-none border-none">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span>Hubungi via WhatsApp</span>
+          </a>
+        </div>
+
+        <!-- Maps container -->
+        <div class="rounded-[30px] overflow-hidden border border-[#E5E7EB] shadow-sm h-[380px] relative reveal">
+          <iframe 
+            title="Location"
+            src="https://www.google.com/maps/embed?pb=!11m18!1m12!1m3!1d3966.2541334057863!2d106.80436857410068!3d-6.230198061011854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f15049fb59f1%3A0x6335165c711a3b50!2sKebayoran%20Baru%2C%20South%20Jakarta%20City%2C%20Jakarta!5e0!3m2!1sen!2sid!4v1690000000000!5m2!1sen!2sid" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LUXURY FOOTER -->
+  <footer class="bg-[#0F5E4F] text-white pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/10 pb-12">
+      
+      <!-- Col 1 -->
+      <div class="space-y-4">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#0F5E4F]">
+            <i class="fa-solid fa-mug-hot text-[#0F5E4F] text-xs"></i>
+          </div>
+          <span class="font-bold text-lg tracking-wider">EMERALD BREW</span>
+        </div>
+        <p class="text-xs text-white/70 leading-relaxed font-light">
+          Premium modern minimalist coffee shop inspired by Korean cafe aesthetic. Where every single cup of coffee brings you warmth and inner peace.
+        </p>
+      </div>
+
+      <!-- Col 2 -->
+      <div class="space-y-4">
+        <h4 class="font-bold text-xs uppercase tracking-widest text-[#38A169]">Navigasi Cepat</h4>
+        <ul class="text-xs space-y-2.5 text-white/70 font-light list-none p-0">
+          <li><a href="#home" class="hover:text-white transition-colors text-white/70 decoration-none">Home</a></li>
+          <li><a href="#about" class="hover:text-white transition-colors text-white/70 decoration-none">About Us</a></li>
+          <li><a href="#menu" class="hover:text-white transition-colors text-white/70 decoration-none">Our Menu</a></li>
+          <li><a href="#gallery" class="hover:text-white transition-colors text-white/70 decoration-none">Gallery</a></li>
+          <li><a href="./about.html" class="hover:text-white transition-colors font-bold text-[#38A169] decoration-none">UAS Page</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3 -->
+      <div class="space-y-4">
+        <h4 class="font-bold text-xs uppercase tracking-widest text-[#38A169]">Jam Operasional</h4>
+        <ul class="text-xs space-y-2 text-white/70 font-light list-none p-0">
+          <li class="flex justify-between">
+            <span>Senin - Jumat:</span>
+            <span>08.00 - 22.00 WIB</span>
+          </li>
+          <li class="flex justify-between">
+            <span>Sabtu - Minggu:</span>
+            <span>09.00 - 23.00 WIB</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 4 -->
+      <div class="space-y-4">
+        <h4 class="font-bold text-xs uppercase tracking-widest text-[#38A169]">Hubungkan Dengan Kami</h4>
+        <p class="text-xs text-white/70 font-light">Ikuti akun resmi kami untuk update menu terbaru dan promo menarik.</p>
+        <div class="flex space-x-3">
+          <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#38A169] transition-colors flex items-center justify-center text-white text-sm decoration-none">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://facebook.com" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#38A169] transition-colors flex items-center justify-center text-white text-sm decoration-none">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom lines -->
+    <div class="max-w-7xl mx-auto px-6 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-white/50 font-light space-y-4 md:space-y-0">
+      <span>&copy; 2026 Emerald Brew Cafe Jakarta. Semua Hak Cipta Dilindungi.</span>
+      <div class="flex items-center space-x-1">
+        <span>Dibuat dengan</span>
+        <i class="fa-solid fa-heart text-[#38A169]"></i>
+        <span>untuk UAS STIE Ekadharma Indonesia</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Core Javascript -->
+  <script src="./js/script.js"></script>
+</body>
+</html>
