@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const time = document.getElementById('res-time').value;
       const notes = document.getElementById('res-notes').value || '-';
 
-      const waNumber = '6281234567890'; // Custom static wa number formatted correctly
+      const waNumber = '6281275642954'; // Custom static wa number formatted correctly
       
       const message = `Nama : ${name}\n` +
         `Nomor HP : ${phone}\n` +

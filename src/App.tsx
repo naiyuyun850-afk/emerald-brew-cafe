@@ -138,7 +138,7 @@ export default function App() {
   // Submit reservation to WhatsApp
   const handleReservationSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const waNumber = '6281234567890'; // Custom static wa number formatted correctly
+    const waNumber = '6281275642954'; // Custom static wa number formatted correctly
     const text = `Halo Emerald Brew, saya ingin melakukan reservasi:\n\n` +
       `*Nama* : ${reserveForm.nama}\n` +
       `*Nomor HP* : ${reserveForm.phone}\n` +
@@ -851,7 +851,7 @@ export default function App() {
                           <h4 className="font-bold text-sm text-[#1F2937]">Kontak Digital</h4>
                           <p className="text-xs text-[#6B7280] leading-relaxed mt-1">
                             Email: contact@emeraldbrew.com <br />
-                            WhatsApp: +62 812-3456-7890
+                            WhatsApp: +62 812-7564-2954
                           </p>
                         </div>
                       </div>
@@ -859,7 +859,7 @@ export default function App() {
 
                     {/* Action button */}
                     <button 
-                      onClick={() => window.open('https://wa.me/6281234567890?text=Halo%20Emerald%20Brew', '_blank')}
+                      onClick={() => window.open('https://wa.me/6281275642954?text=Halo%20Emerald%20Brew', '_blank')}
                       className="px-8 py-3.5 bg-[#1C7C68] hover:bg-[#0F5E4F] text-white text-xs font-semibold tracking-wider uppercase rounded-full shadow-[0_4px_20px_rgba(28,124,104,0.15)] hover:shadow-lg transition-all duration-300 flex items-center space-x-2 cursor-pointer"
                     >
                       <Phone size={14} />
